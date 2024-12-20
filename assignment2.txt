@@ -1,0 +1,31 @@
+# Create and edit the shell script
+nano hello_script.sh
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# In the text editor, enter the following code:
+#!/bin/bash
+for i in {1..1000}
+do
+    echo "Hello"
+    sleep 1  # Sleep for 1 second after each print
+done
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+# Make the script executable
+chmod +x hello_script.sh
+
+# Execute the script
+./hello_script.sh
+
+# Gather node information
+sinfo -N -l > node_report.txt
+
+# Gather partition information
+sinfo -s > partition_report.txt
+
+# Check node state reasons
+scontrol show node <node_name>  # Replace <node_name> with actual node name
