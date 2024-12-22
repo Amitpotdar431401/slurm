@@ -1,0 +1,21 @@
+
+
+sacctmgr show user
+
+sacctmgr add account ubuntu --immediate
+
+
+ sacctmgr create user ubuntu defaultaccount=ubuntu adminlevel=[none] --immediate
+
+sacctmgr show acc
+sacctmgr show qos format=name,priority
+
+sacctmgr add qos tiger
+
+      sacctmgr show qos
+    sacctmgr modify qos tiger set priority=10
+     sacctmgr modify qos tiger set maxjob=4
+     sacctmgr modify user ubuntu set qos=tiger
+      sbatch job.sh
+
+  sudo chown ubuntu:ubuntu job.sh
