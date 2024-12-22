@@ -21,12 +21,12 @@ chmod +x hello_script.sh
 # Execute the script
 ./hello_script.sh
 
-# To generate a row per each node configuration (CPU, memory) with summary availability information
+1) # To generate a row per each node configuration (CPU, memory) with summary availability information
 sinfo -N -o "%N %c %m %t %E" | awk 'NR==1 || $4=="idle" {print}'
 
-# To generate a row per partition with summary availability information
+2) # To generate a row per partition with summary availability information
 sinfo -o "%P %D %C %T"
 
 
-# List reasons nodes are in the down, drained, fail or failing state in along format
+3) # List reasons nodes are in the down, drained, fail or failing state in along format
 scontrol show nodes | grep -E "NodeName|State=DOWN|State=DRAIN|Fail" -A 1
