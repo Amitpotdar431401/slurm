@@ -6,7 +6,11 @@
 # including resource usage (like memory, CPU) and exit status.
 
 # Command to view job details (replace <job_id> with the actual job ID):
+
+----------------------------------------------------------------------------
 sacct -j <job_id> --format=JobID,AllocCPUs,Elapsed,MaxRSS,MaxVMSize,ExitCode
+----------------------------------------------------------------------------
+
 
 # Explanation of fields:
 # - JobID: Job identifier
@@ -36,7 +40,9 @@ sleep 60  # Simulating a job that runs for 60 seconds
 +++++++++++++++++++++++++++++++++++++++++++++++++
 
 # Submit the job using sbatch:
+----------------------------------------------------------------------------
 sbatch job_script.sh
+----------------------------------------------------------------------------
 
 
 ## 3. Setting a Maximum Runtime for a Job (3 hours)
@@ -58,6 +64,11 @@ sleep 10800  # Simulating a job that runs for 3 hours
 +++++++++++++++++++++++++++++++++++++++++++++++++
 
 # Submit the job using sbatch:
+#----------------------------------------------------------------------------
 sbatch job_with_time_limit.sh
+#----------------------------------------------------------------------------
 
+
+----------------------------------------------------------------------------
 scontrol show job <JOB_ID>
+----------------------------------------------------------------------------
