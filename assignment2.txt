@@ -21,11 +21,12 @@ chmod +x hello_script.sh
 # Execute the script
 ./hello_script.sh
 
-# Gather node information
-sinfo -N -l > node_report.txt
+# To generate a row per each node configuration (CPU, memory) with summary availability information
+sinfo -N -o "%N %c %m %t %E" | awk 'NR==1 || $4=="idle" {print}'
 
-# Gather partition information
-sinfo -s > partition_report.txt
+# To generate a row per partition with summary availability information
+sinfo -o "%P %D %C %T"
 
-# Check node state reasons
-scontrol show node <node_name>  # Replace <node_name> with actual node name
+
+# List reasons nodes are in the down, drained, fail or failing state in along format
+scontrol show nodes | grep -E "NodeName|State=DOWN|State=DRAIN|Fail" -A 1
