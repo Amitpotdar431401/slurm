@@ -21,6 +21,7 @@ echo "Job completed at $(date)"
 ++++++++++++++++++++++++++++++++++++++++++
 
 # Submit the job
+sudo chmod +x file_name
 sbatch assig3.sh
 
 # List pending jobs (not running)
@@ -47,6 +48,7 @@ done
 ++++++++++++++++++++++++++++++++++++++++++
 
 # Submit the job
+sudo chmod +x file_name
 sbatch script.sh
 
 # Monitor resource usage of the running job (replace <job_id> with actual job ID)
