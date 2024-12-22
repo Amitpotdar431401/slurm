@@ -60,3 +60,4 @@ sleep 10800  # Simulating a job that runs for 3 hours
 # Submit the job using sbatch:
 sbatch job_with_time_limit.sh
 
+scontrol show job <JOB_ID>
