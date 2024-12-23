@@ -1,0 +1,6 @@
+                           change IP
+
+/etc/hosts/
+/etc/MySQL/mariadb.conf.d/50-server.cnf
+/etc/mysql/debain.cnf
+slurm/etc/slurmdbd.conf
