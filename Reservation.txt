@@ -1,0 +1,83 @@
+Here are the steps and correct commands to perform the tasks from the document:
+
+
+---
+
+1. Create a Reservation
+
+Create a reservation named examres for the exam partition for all nodes belonging to the partition, allowing access only for the user examuser for 10 minutes.
+
+Command:
+
+scontrol create reservation name=examres starttime=now duration=00:10:00 user=examuser partition=exam
+
+
+---
+
+2. Update slurm.conf Configuration
+
+Modify the slurm.conf file to set preemption policies.
+
+a. Set PreemptType and PreemptMode to Preempt/Partition_Prio
+
+Add the following lines in slurm.conf:
+
+PreemptType=preempt/partition_prio
+PreemptMode=SUSPEND,GANG
+
+b. Set PreemptType and PreemptMode to Preempt/QOS
+
+Modify or replace the above lines in slurm.conf:
+
+PreemptType=preempt/qos
+PreemptMode=SUSPEND,GANG
+
+
+---
+
+3. Restart Slurm Services
+
+After editing the slurm.conf, restart the Slurm services to apply the changes.
+
+Command:
+
+sudo systemctl restart slurmctld
+sudo systemctl restart slurmd
+
+
+---
+
+4. Submit a Job and Explain the Output
+
+Submit a job and analyze the behavior based on the preemption configurations.
+
+Command to Submit a Job:
+
+sbatch --partition=exam --time=00:05:00 --job-name=test_job test_script.sh
+
+Replace test_script.sh with the name of your job script.
+
+Explanation of the Output:
+
+1. With PreemptType=preempt/partition_prio:
+
+Jobs in a higher-priority partition preempt lower-priority jobs.
+
+Preempted jobs are suspended or terminated depending on the PreemptMode.
+
+
+
+2. With PreemptType=preempt/qos:
+
+Jobs with a higher Quality of Service (QoS) value preempt those with lower QoS.
+
+Preempted jobs behave as defined in PreemptMode.
+
+
+
+
+
+---
+
+Let me know if you need further clarification or help with testing these steps.
+
